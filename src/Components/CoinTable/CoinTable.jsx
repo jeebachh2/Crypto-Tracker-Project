@@ -1,26 +1,29 @@
-import {  useState } from "react";
+import {  useContext, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
-import React from 'react'
+
+import { CurrencyContext } from "../../context/CurrencyContext";
 
 
 
 function CoinTable() {
+  const {currency} = useContext(CurrencyContext);
   const [page, setPage] = useState(1)
 
   const fetchCoins = async (page) => {
     const res = await fetch(
-      `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&per_page=10&page=${page}`
+      `https://api.coingecko.com/api/v3/coins/markets?vs_currency=${currency}&per_page=10&page=${page}`
     )
     if (!res.ok) throw new Error('Network response was not ok')
     return res.json()
   }
 
   const { data, isLoading, isError, error } = useQuery({
-    queryKey: ['coins', page], // 👈 unique cache per page
-    queryFn: () => fetchCoins(page),
+    queryKey: ['coins', page, currency], // 👈 unique cache per page
+    queryFn: () => fetchCoins(page, currency),
     keepPreviousData: true, // 👈 keeps old data while loading new
     staleTime: 1000 * 60,   // optional: 1 minute
   })
+
 
   if (isLoading) return <p>Loading...</p>
   if (isError) return <p>Error: {error.message}</p>

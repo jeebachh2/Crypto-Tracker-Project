@@ -1,4 +1,9 @@
+import { useContext } from "react";
+import { CurrencyContext } from "../../context/CurrencyContext";
+
 function Navbar() {
+
+   const {setCurrency} = useContext(CurrencyContext);
     return(
         <div className="navbar bg-base-100 shadow-sm">
   <div className="navbar-start">
@@ -9,9 +14,9 @@ function Navbar() {
       <ul
         tabIndex={0}
         className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
-        <li><a>Homepage</a></li>
-        <li><a>Portfolio</a></li>
-        <li><a>About</a></li>
+        <li onClick={() => setCurrency('inr')}><a>INR</a></li>
+        <li onClick={() => setCurrency('usd')}><a>USD</a></li>
+        
       </ul>
     </div>
   </div>
