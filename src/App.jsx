@@ -4,11 +4,12 @@ import './App.css'
 import Home from './pages/Home';
 import {CurrencyContext} from './context/CurrencyContext';
 import Routing from './Components/Routing/Routing';
+import Navbar from './Components/Navbar/Navbar';
 
 
 
 function App() {
-  // const [currency, setCurrency] = useState('usd');
+  
  
 
   return (
@@ -17,9 +18,10 @@ function App() {
     
 
     
-    {/* <CurrencyContext.Provider value= { {currency, setCurrency} } > */}
+    
+      
       <Routing />
-    {/* </CurrencyContext.Provider> */}
+    
      
      
     
