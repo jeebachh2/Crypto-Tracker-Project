@@ -14,16 +14,7 @@ function App() {
 
   return (
     <>
-     
-    
-
-    
-    
-      
       <Routing />
-    
-     
-     
     
     </>
   )

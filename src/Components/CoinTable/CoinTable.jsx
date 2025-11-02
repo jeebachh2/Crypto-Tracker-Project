@@ -2,7 +2,8 @@ import {   useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 
 import { CurrencyContext } from "../../context/CurrencyContext";
-import currencyStore from '../../state/Store';
+// import currencyStore from '../../state/Store';
+import { currencyStore } from '/src/state/Store.js';
 import { useNavigate } from "react-router-dom";
 
 
@@ -64,7 +65,7 @@ function CoinTable() {
               </div>
             </div>
 
-            <div className="basis-[25%]">${coin.current_price}</div>
+            <div className="basis-[25%]">{coin.current_price}</div>
             <div
               className={`basis-[20%] ${
                 coin.price_change_percentage_24h > 0 ? 'text-green-400' : 'text-red-400'

@@ -1,6 +1,8 @@
 // import { useContext } from "react";
 // import { CurrencyContext } from "../../context/CurrencyContext";
-import currencyStore from '../../state/Store';
+
+import { currencyStore } from '/src/state/Store.js';
+
 
 function Navbar() {
 

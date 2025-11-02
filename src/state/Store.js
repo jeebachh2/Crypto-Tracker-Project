@@ -1,14 +1,7 @@
-import {create} from 'zustand';
+import { create } from "zustand";
 
-const Store = create((set) => ({
-    currency : 'usd',
-    setCurrency: (newCurrency) => set((state) => {
-        return {
-            ...state,
-            currency : newCurrency
-        }
-    })
-
-}) ) 
-
-export default Store;
+// ✅ This defines and exports a named store
+export const currencyStore = create((set) => ({
+  currency: "usd",
+  setCurrency: (newCurrency) => set({ currency: newCurrency }),
+}));
