@@ -1,6 +1,8 @@
 import {Route, Routes} from "react-router-dom";
 import {lazy, Suspense} from 'react';
 import MainLayout from "../../pages/Layout";
+import PageLoader from "../PageLoader/PageLoad"
+// import {Facebook} from "react-content-loader";
 
 const Home = lazy(() => import('../../pages/Home'));
 const CoinDetailsPage = lazy(() => import('../../pages/CoinDetailsPage'));
@@ -12,12 +14,12 @@ function Routing() {
             <Route path="/" element={<MainLayout />} >
             
                <Route index element={
-                 <Suspense fallback={<div>Loading Home...</div>}>
+                 <Suspense fallback={<PageLoader />}>
                     <Home/>
                 </Suspense>
                } />
                <Route path="/details/:coinId" element={
-                 <Suspense fallback={<div>Loading details...</div>}>
+                 <Suspense fallback={<PageLoader />}>
                     <CoinDetailsPage />
                 </Suspense>
                } />

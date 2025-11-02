@@ -5,6 +5,7 @@ import { CurrencyContext } from "../../context/CurrencyContext";
 // import currencyStore from '../../state/Store';
 import { currencyStore } from '/src/state/Store.js';
 import { useNavigate } from "react-router-dom";
+import PageLoader from "../PageLoader/PageLoad"
 
 
 
@@ -33,7 +34,9 @@ function CoinTable() {
     navigate(`/details/${id}`);
   };
 
-  if (isLoading) return <p>Loading...</p>
+  if (isLoading) {
+    return <PageLoader />;
+  }
   if (isError) return <p>Error: {error.message}</p>
   if (!data) return null
 
