@@ -1,7 +1,7 @@
 // import { useParams } from "react-router-dom";
 import { currencyStore } from "../state/Store";
 import { useQuery } from "@tanstack/react-query";
-import {fetchCoinDetails} from "../Services/fetchCoinDetails";
+import fetchCoinDetails from "../Services/fetchCoinDetails";
 
 function useFetchCoin(coinId) {
     // const { coinId } = useParams();

@@ -39,7 +39,7 @@ import axiosInstance from "../helpers/axiosInstance";
 
 
 
-export async function fetchCoinHistoricData(
+export default async function fetchCoinHistoricData(
   id,
   interval = "hourly",
   days = 7,
