@@ -1,24 +1,20 @@
 import { useParams } from "react-router-dom";
-import fetchCoinDetails from '/src/Services/fetchCoinDetails.js';
-import { useQuery } from "@tanstack/react-query";
+// import fetchCoinDetails from '/src/Services/fetchCoinDetails.js';
+// import { useQuery } from "@tanstack/react-query";
 import { useEffect } from "react";
 // import {fetchCoinDetails} from "../Services/fetchCoinDetails";
-import { currencyStore } from "../state/Store";
+// import { currencyStore } from "../state/Store";
+import CoinInfoContainer from "../Components/CoinInfo/CoinInfoContainer";
+import useFetchCoin from "../hooks/useFetchCoin";
 // import parse from 'html-react-parser';
 
 function CoinDetailsPage() {
-  const { coinId } = useParams();
-  const { currency } = currencyStore();
+  
 
-  // ✅ Fixed variable name: coinId (not coinid)
-  const { isError, isLoading, data: coin } = useQuery(
-    ["coin", coinId],
-    () => fetchCoinDetails(coinId),
-    {
-      cacheTime: 1000 * 60 * 2,
-      staleTime: 1000 * 60 * 2,
-    }
-  );
+  const {coinId} = useParams();
+  const {isLoading, isError, coin, currency} = useFetchCoin(coinId);
+
+
   useEffect(() => {
     console.log(coin);
   }, [coin]);
@@ -63,7 +59,9 @@ function CoinDetailsPage() {
       </div>
      </div>
 
-     <div className="md:w-2/3 w-full p-6">Coin Information</div>
+     <div className="md:w-2/3 w-full p-6">
+     <CoinInfoContainer coinId={coinId}/>
+     </div>
     </div>
   );
 }
